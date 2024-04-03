@@ -1,14 +1,28 @@
-export interface Nutrients {
-    energy: number;
-    water: number;
-    protein: number;
-    nitrogen: number;
-    lipid: number;
+export interface AbridgedFoodNutrients {
+    number?: number;
+    name?: string;
+    amount?: number;
+    unitName?: string;
+    derivationCode?: string;
+    derivationDescription?: string;
 }
 
-export interface Food {
-    foodCategory: string;
+export interface SearchResultFood {
     fdcId: number;
-    name: string;
-    fdcPublished: Date;
+    dataType?: string;
+    description: string;
+    foodCode?: string;
+    foodNutrients?: AbridgedFoodNutrients[];
+    publicationDate: string;
+    scientificName?: string;
+    brandOwner?: string;
+    gtinUpc?: string;
+    ingredients?: string;
+    ndbNumber?: number;
+    additionnalDescriptions?: string;
+    allHighlightFields?: string;
+    score?: number;
+    
+    publishedDate?: string;
+    foodCategory?: string;
 }

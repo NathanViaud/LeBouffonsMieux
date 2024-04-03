@@ -1,4 +1,5 @@
-export function getFormattedDate(date: string) {
+export function getFormattedDate(date: string | undefined) {
+    if(!date) return;
     const options:  Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'long',
