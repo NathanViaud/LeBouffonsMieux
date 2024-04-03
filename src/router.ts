@@ -10,6 +10,11 @@ export const router = createRouter({
         {
             path: '/search',
             component: () => import('@/pages/search.vue')
+        },
+        {
+            path: '/details/:id',
+            component: () => import('@/pages/details.vue'),
+            props: true
         }
     ]
 })

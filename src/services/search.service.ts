@@ -1,10 +1,10 @@
-import type { SearchResult } from '@/types';
 import axios from 'axios';
+import { SearchResultFood } from '@/types';
 
 const API_KEY= import.meta.env.VITE_API_KEY;
 const API_URL = 'https://api.nal.usda.gov/fdc/v1/foods/search';
 
-export async function search(query: string): Promise<SearchResult[]> {
+export async function search(query: string): Promise<SearchResultFood[]> {
     const options = {
         method: 'GET',
         url: API_URL,
@@ -23,4 +23,20 @@ export async function search(query: string): Promise<SearchResult[]> {
     const response = await axios.request(options);
     
     return response.data.foods;
+}
+
+export async function fetchItemById(id: number) {
+    const options = {
+        method: 'GET',
+        url: `https://api.nal.usda.gov/fdc/v1/food/${id}`,
+        params: {
+            format: 'abridged',
+            api_key: API_KEY
+        },
+        headers: { 'accept': 'application/json' }
+    }
+    
+    const response = await axios.request(options);
+    
+    return response.data;
 }
