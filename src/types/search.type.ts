@@ -1,7 +1,7 @@
 export interface SearchResult {
-    nbdNumber: number;
+    ndbNumber: number;
     description: string;
-    lastUpdated: Date;
+    publishedDate: string;
     foodCategory: string;
 }
 
