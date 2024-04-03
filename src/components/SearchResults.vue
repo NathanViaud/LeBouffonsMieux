@@ -31,7 +31,7 @@ function details() {
         </TableHeader>
         <TableBody>
             <TableRow @click="details" v-for="result in searchStore.searchResults">
-                <TableCell>{{ result.ndbNumber }}</TableCell>
+                <TableCell class="font-medium">{{ result.ndbNumber }}</TableCell>
                 <TableCell>{{ result.description }}</TableCell>
                 <TableCell>{{ getFormattedDate(result.publishedDate) }}</TableCell>
                 <TableCell>{{ result.foodCategory }}</TableCell>
