@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import { Table, TableRow, TableHeader, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { useSearchStore } from '@/stores/search.store.ts';
-import { getFormattedDate } from '../utils';
+import { getFormattedDate } from '@/utils';
+import { Button } from '@/components/ui/button';
 
 const searchStore = useSearchStore();
+
+function addItem() {
+    // TODO: Implement add item functionality
+    console.log('Add item');
+}
+
+function details() {
+    // TODO: Implement details functionality
+    console.log('Details');
+}
 
 </script>
 
@@ -15,14 +26,18 @@ const searchStore = useSearchStore();
                 <TableHead>Description</TableHead>
                 <TableHead>Publication</TableHead>
                 <TableHead>Food Category</TableHead>
+                <TableHead></TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow v-for="result in searchStore.searchResults">
+            <TableRow @click="details" v-for="result in searchStore.searchResults">
                 <TableCell>{{ result.ndbNumber }}</TableCell>
                 <TableCell>{{ result.description }}</TableCell>
                 <TableCell>{{ getFormattedDate(result.publishedDate) }}</TableCell>
                 <TableCell>{{ result.foodCategory }}</TableCell>
+                <TableCell>
+                    <Button variant="outline" @click.stop="addItem">Add</Button>
+                </TableCell>
             </TableRow>
         </TableBody>
     </Table>

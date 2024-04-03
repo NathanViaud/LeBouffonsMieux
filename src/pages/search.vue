@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Sidebar.vue';
 import { useSearchStore } from '@/stores/search.store';
 import SearchResults from '@/components/SearchResults.vue';

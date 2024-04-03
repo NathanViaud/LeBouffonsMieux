@@ -12,7 +12,7 @@ export async function search(query: string): Promise<SearchResult[]> {
             query: query,
             dataType: 'Foundation, SR Legacy',
             pageSize: 25,
-            pageNumber: 2,
+            pageNumber: 1,
             sortBy: 'dataType.keyword',
             sortOrder: 'asc',
             api_key: API_KEY
