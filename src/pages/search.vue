@@ -2,11 +2,12 @@
 import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Sidebar.vue';
 import { useSearchStore } from '@/stores/search.store';
+import SearchResults from '@/components/SearchResults.vue';
 
 const searchStore = useSearchStore();
 
 async function handleSearch(query: string) {
-    searchStore.search(query);
+    await searchStore.search(query);
 }
 
 </script>
@@ -14,10 +15,8 @@ async function handleSearch(query: string) {
 <template>
     <div class="flex gap-2">
         <Sidebar @search="handleSearch" />
-        <div class="flex flex-col gap-2">
-            <pre v-if="!searchStore.loading">{{ searchStore.searchResults }}</pre>
-            <p v-else>Loading...</p>
-            <Button>Click me!</Button>
+        <div class="flex flex-col gap-2 w-full">
+            <SearchResults :results="searchStore.searchResults" />
         </div>
     </div>
 </template>
