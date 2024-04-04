@@ -26,3 +26,7 @@ export interface SearchResultFood {
     publishedDate?: string;
     foodCategory?: string;
 }
+
+export interface Food extends SearchResultFood {
+    quantity: number;
+}

@@ -2,21 +2,26 @@
 import { Table, TableRow, TableHeader, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { useSearchStore } from '@/stores/search.store.ts';
 import { getFormattedDate } from '@/utils';
-import { Button } from '@/components/ui/button';
 import { router } from '@/router.ts';
 import Spinner from '@/components/Spinner.vue';
+import { useUserStore } from '@/stores/user.store.ts';
+import QuantityDialog from '@/components/QuantityDialog.vue';
+import { Food, SearchResultFood } from '@/types';
 
 const searchStore = useSearchStore();
-
-function addItem() {
-    // TODO: Implement add item functionality
-    console.log('Add item');
-}
+const userStore = useUserStore();
 
 function goToDetails(id: number) {
     router.push(`/details/${id}`)
 }
 
+function saveProduct(product: SearchResultFood, quantity: number) {
+    const newProduct: Food = {
+        ...product,
+        quantity
+    }
+    userStore.addFood(newProduct);
+}
 </script>
 
 <template>
@@ -38,7 +43,7 @@ function goToDetails(id: number) {
                     <TableCell>{{ getFormattedDate(result.publishedDate) || 'not defined' }}</TableCell>
                     <TableCell>{{ result.foodCategory }}</TableCell>
                     <TableCell>
-                        <Button variant="outline" @click.stop="addItem">Add</Button>
+                        <QuantityDialog @save="saveProduct(result, $event)" label="Add" variant="outline" />
                     </TableCell>
                 </TableRow>
             </TableBody>
