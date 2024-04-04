@@ -1,7 +1,8 @@
-import { describe, beforeEach, it } from 'vitest';
+import { expect, describe, beforeEach, it } from 'vitest';
 import { bread, cheddar } from '../mocks/food.mock';
 import { useUserStore } from '../../src/stores/user.store';
 import { setActivePinia, createPinia } from 'pinia';
+import { createFood } from '../../src/utils';
 
 describe('User store', () => {
     beforeEach(() => {
@@ -10,16 +11,23 @@ describe('User store', () => {
     
     it('add Item to foodList', async() => {
         const userStore = useUserStore();
-        userStore.addFood(bread);
         
-        expect(userStore.foodList).toEqual([bread]);
+        const breadFood = createFood();
+        
+        userStore.addFood(breadFood);
+        
+        expect(userStore.foodList).toEqual([breadFood]);
     })
     
     it('getEnergy', async() => {
         const userStore = useUserStore();
-        userStore.addFood(bread);
-        userStore.addFood(cheddar);
         
-        expect(userStore.getEnergy).toBe(662);
+        const breadFood = createFood(bread, 200);
+        const cheddarFood = createFood(cheddar, 200);
+        
+        userStore.addFood(breadFood);
+        userStore.addFood(cheddarFood);
+        
+        expect(userStore.getEnergy).toBe(662 * 2);
     })
 })
