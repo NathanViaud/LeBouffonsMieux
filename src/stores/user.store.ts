@@ -7,7 +7,7 @@ interface UserStore {
 
 export const useUserStore = defineStore('user', {
     state: (): UserStore => ({
-        foodList: []
+        foodList: localStorage.getItem('foodList') ? JSON.parse(localStorage.getItem('foodList')!) : ([] as Food[])
     }),
     
     getters: {
@@ -74,8 +74,13 @@ export const useUserStore = defineStore('user', {
     },
     
     actions: {
+        saveFoodList() {
+            localStorage.setItem('foodList', JSON.stringify(this.foodList));
+        },
+        
         addFood(food: Food) {
             this.foodList.push(food);
+            this.saveFoodList();
         }
     }
 })
