@@ -13,7 +13,7 @@ async function handleSearch(query: string) {
 
 <template>
     <div class="flex gap-2">
-        <Sidebar @search="handleSearch" />
+        <!-- <Sidebar @search="handleSearch" /> -->
         <div class="flex flex-col gap-2 w-full">
             <SearchResults :results="searchStore.searchResults" />
         </div>

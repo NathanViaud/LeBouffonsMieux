@@ -15,6 +15,10 @@ export const router = createRouter({
             path: '/details/:id',
             component: () => import('@/pages/details.vue'),
             props: true
+        },
+        {
+            path: '/daily',
+            component: ()=> import('@/pages/DailyTable.vue')
         }
     ]
 })
