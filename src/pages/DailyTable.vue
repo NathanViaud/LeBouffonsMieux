@@ -1,19 +1,16 @@
 <script setup lang="ts">
-// import { Button } from '@/components/ui/button';
-// import Sidebar from '@/components/Sidebar.vue';
-// import { useSearchStore } from '@/stores/search.store';
 import DailyResult from '@/components/DailyResult.vue';
 import DailyList from '@/components/DailyList.vue';
 
 const dataFood = [
-  {
-    Name: 'Bread',
-    Amount: 55
-  },
-  {
-    Name: 'Beaf Steak',
-    Amount: 110
-  }
+    {
+        Name: 'Bread',
+        Amount: 55
+    },
+    {
+        Name: 'Beaf Steak',
+        Amount: 110
+    }
 ]
 const data = [
     {
@@ -33,24 +30,26 @@ const data = [
 </script>
 
 <template>
-    <div class="py-5">
-      <p class="text-center font-bold text-lg">Result of your daily nutritional intake</p>
-    </div>
-    <div class="w-3/4 mx-auto">
-      <p class="font-bold pb-3">Daily food list</p>
-      <div class="flex gap-2">
-        <div class="flex flex-col gap-2 w-full">
-            <DailyList :dataFood="dataFood" />
+    <div>
+        <div class="py-5">
+            <p class="text-center font-bold text-lg">Result of your daily nutritional intake</p>
         </div>
-      </div>
-    </div>
-    <div class="border border-black w-3/4 rounded-lg mx-auto"></div>
-    <div class="w-3/4 mx-auto py-4">
-      <p class="font-bold pb-3">Nutrient intake</p>
-      <div class="flex gap-2">
-        <div class="flex flex-col gap-2 w-full">
-            <DailyResult :data="data" />
+        <div class="w-3/4 mx-auto">
+            <p class="font-bold pb-3">Daily food list</p>
+            <div class="flex gap-2">
+                <div class="flex flex-col gap-2 w-full">
+                    <DailyList :dataFood="dataFood"/>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="border border-black w-3/4 rounded-lg mx-auto"></div>
+        <div class="w-3/4 mx-auto py-4">
+            <p class="font-bold pb-3">Nutrient intake</p>
+            <div class="flex gap-2">
+                <div class="flex flex-col gap-2 w-full">
+                    <DailyResult :data="data"/>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

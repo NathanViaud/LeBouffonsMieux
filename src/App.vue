@@ -13,7 +13,7 @@ async function handleSearch(query: string) {
 
 <template>
     <Header @search="handleSearch" />
-    <router-view class="p-4" />
+    <router-view class="p-4 mt-32" />
     <Toaster />
 </template>
 
