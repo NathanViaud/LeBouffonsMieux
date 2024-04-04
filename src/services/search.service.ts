@@ -4,6 +4,10 @@ import { SearchResultFood } from '@/types';
 const API_KEY= import.meta.env.VITE_API_KEY;
 const API_URL = 'https://api.nal.usda.gov/fdc/v1/foods/search';
 
+/**
+ * Search for foods containing the query string
+ * @param query
+ */
 export async function search(query: string): Promise<SearchResultFood[]> {
     const options = {
         method: 'GET',
@@ -25,7 +29,11 @@ export async function search(query: string): Promise<SearchResultFood[]> {
     return response.data.foods;
 }
 
-export async function fetchItemById(id: number) {
+/**
+ * Fetch a food item by its ID
+ * @param id
+ */
+export async function fetchItemById(id: number): Promise<SearchResultFood> {
     const options = {
         method: 'GET',
         url: `https://api.nal.usda.gov/fdc/v1/food/${id}`,
