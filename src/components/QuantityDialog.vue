@@ -29,8 +29,8 @@ const quantity = ref(0);
 function save() {
     emits('save', quantity.value);
     toast({
-        title: 'Product correclty added',
-        description: `${quantity.value}`,
+        title: 'Product correctly added',
+        description: `${quantity.value}g`,
     });
 }
 </script>
@@ -53,9 +53,9 @@ function save() {
                     Enter the quantity to add
                 </DialogDescription>
             </DialogHeader>
-            <div class="flex items-center gap-4">
+            <div class="flex flex-col gap-2">
                 <Label for="quantity">
-                    Quantity
+                    Quantity in grams
                 </Label>
                 <Input v-model="quantity" id="quantity" class="flex-1" type="number" />
             </div>
