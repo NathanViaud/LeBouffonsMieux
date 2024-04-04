@@ -30,10 +30,7 @@ onMounted(async () => {
 })
 
 function saveProduct(product: SearchResultFood, quantity: number) {
-    const newProduct: Food = {
-        ...product,
-        quantity
-    }
+    const newProduct = createFood(product, quantity);
     userStore.addFood(newProduct);
 }
 </script>

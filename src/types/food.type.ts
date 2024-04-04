@@ -29,4 +29,5 @@ export interface SearchResultFood {
 
 export interface Food extends SearchResultFood {
     quantity: number;
+    date: string;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Table, TableRow, TableHeader, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { useSearchStore } from '@/stores/search.store.ts';
-import { getFormattedDate } from '@/utils';
+import { createFood, getFormattedDate } from '@/utils';
 import { router } from '@/router.ts';
 import Spinner from '@/components/Spinner.vue';
 import { useUserStore } from '@/stores/user.store.ts';
@@ -21,10 +21,7 @@ async function saveProduct(id: number, quantity: number) {
     //? Fetching the true SearchResultsFoods not the one returned by the search
     const product = await fetchItemById(id);
 
-    const newProduct: Food = {
-        ...product,
-        quantity
-    }
+    const newProduct = createFood(product, quantity);
     userStore.addFood(newProduct);
 }
 </script>
