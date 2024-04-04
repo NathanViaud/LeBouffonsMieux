@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', {
             let res = 0;
             for(const food of state.foodList) {
                 if(!food.foodNutrients) continue;
-                const energy = food.foodNutrients.find((nutrient) => nutrient.name === 'Energy');
+                const energy = food.foodNutrients.find((nutrient) => nutrient.name === 'Energy' && nutrient.unitName === 'KCAL');
                 if(!energy || !energy.amount) continue;
                 res += energy.amount;
             }
@@ -26,7 +26,7 @@ export const useUserStore = defineStore('user', {
     
     actions: {
         addFood(food: Food) {
-            this.foodList.push(food)
+            this.foodList.push(food);
         }
     }
 })
