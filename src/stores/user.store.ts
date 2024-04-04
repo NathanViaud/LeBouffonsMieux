@@ -10,6 +10,20 @@ export const useUserStore = defineStore('user', {
         foodList: []
     }),
     
+    getters: {
+        getEnergy: (state) => {
+            let res = 0;
+            for(const food of state.foodList) {
+                if(!food.foodNutrients) continue;
+                const energy = food.foodNutrients.find((nutrient) => nutrient.name === 'Energy');
+                if(!energy || !energy.amount) continue;
+                res += energy.amount;
+            }
+            
+            return res;
+        }
+    },
+    
     actions: {
         addFood(food: Food) {
             this.foodList.push(food)

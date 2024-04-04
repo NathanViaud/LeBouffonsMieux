@@ -9,7 +9,7 @@ const searchStore = useSearchStore();
 <template>
     <div class="flex gap-2">
         <div class="flex flex-col gap-2 w-full">
-            <SearchResults :results="searchStore.searchResults" />
+            <SearchResults :results="searchStore.searchResultsFoods" />
         </div>
     </div>
 </template>

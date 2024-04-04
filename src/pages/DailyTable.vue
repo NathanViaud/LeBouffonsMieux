@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import DailyResult from '@/components/DailyResult.vue';
 import DailyList from '@/components/DailyList.vue';
+import { useUserStore } from '@/stores/user.store.ts';
+
+const userStore = useUserStore();
 
 const dataFood = [
     {

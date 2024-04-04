@@ -6,8 +6,9 @@ import { router } from '@/router.ts';
 import Spinner from '@/components/Spinner.vue';
 import { useUserStore } from '@/stores/user.store.ts';
 import QuantityDialog from '@/components/QuantityDialog.vue';
-import { Food, SearchResultFood } from '@/types';
+import { Food } from '@/types';
 import ResultsPagination from '@/components/ResultsPagination.vue';
+import { fetchItemById } from '@/services';
 
 const searchStore = useSearchStore();
 const userStore = useUserStore();
@@ -16,7 +17,10 @@ function goToDetails(id: number) {
     router.push(`/details/${id}`)
 }
 
-function saveProduct(product: SearchResultFood, quantity: number) {
+async function saveProduct(id: number, quantity: number) {
+    //? Fetching the true SearchResultsFoods not the one returned by the search
+    const product = await fetchItemById(id);
+
     const newProduct: Food = {
         ...product,
         quantity
@@ -45,7 +49,7 @@ function saveProduct(product: SearchResultFood, quantity: number) {
                         <TableCell>{{ getFormattedDate(result.publishedDate) || 'not defined' }}</TableCell>
                         <TableCell>{{ result.foodCategory }}</TableCell>
                         <TableCell>
-                            <QuantityDialog @save="saveProduct(result, $event)" label="Add" variant="outline" />
+                            <QuantityDialog @save="saveProduct(result.fdcId, $event)" label="Add" variant="outline" />
                         </TableCell>
                     </TableRow>
                 </TableBody>

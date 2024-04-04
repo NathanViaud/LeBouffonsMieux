@@ -3,14 +3,17 @@ import { onMounted, Ref, ref } from 'vue';
 import Spinner from '@/components/Spinner.vue';
 import BackButton from '@/components/BackButton.vue';
 import NutrientsTable from '@/components/NutrientsTable.vue';
-import { SearchResultFood } from '@/types';
+import { Food, SearchResultFood } from '@/types';
 import { getFormattedDate } from '@/utils';
 import QuantityDialog from '@/components/QuantityDialog.vue';
 import { fetchItemById } from '@/services';
+import { useUserStore } from '@/stores/user.store';
 
 const props = defineProps<{
     id: string
 }>();
+
+const userStore = useUserStore();
 
 const food: Ref<SearchResultFood | null> = ref(null);
 const loading = ref(false);
@@ -26,6 +29,13 @@ onMounted(async () => {
     }
 })
 
+function saveProduct(product: SearchResultFood, quantity: number) {
+    const newProduct: Food = {
+        ...product,
+        quantity
+    }
+    userStore.addFood(newProduct);
+}
 </script>
 
 <template>
@@ -39,7 +49,7 @@ onMounted(async () => {
                 <p class="text-gray-500">
                     {{ getFormattedDate(food.publicationDate) }}
                 </p>
-                <QuantityDialog label="Add to my list" variant="primary" />
+                <QuantityDialog @save="saveProduct(food, $event)" label="Add to my list" variant="primary" />
             </div>
             <NutrientsTable :nutrients="food.foodNutrients" />
         </div>
