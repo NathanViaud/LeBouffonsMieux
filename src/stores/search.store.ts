@@ -1,33 +1,51 @@
 import { SearchResultFood } from '@/types';
 import { defineStore } from 'pinia';
-import { fetchItemById, search } from '@/services';
+import { search } from '@/services';
 
 interface SearchStore {
-    searchResults: SearchResultFood[];
+    searchResultsFoods: SearchResultFood[];
     loading: boolean;
+    totalPage: number;
+    currentPage: number;
+    lastQuery: string;
 }
 
 export const useSearchStore = defineStore('search', {
     state: (): SearchStore => ({
-        searchResults: [],
-        loading: false
+        searchResultsFoods: [],
+        loading: false,
+        totalPage: 0,
+        currentPage: 1,
+        lastQuery: ''
     }),
     
     getters: {
         getItemById: (state) => (id: number) => {
-            return state.searchResults.find((item) => item.fdcId === id);
+            return state.searchResultsFoods.find((item) => item.fdcId === id);
         }
     },
     
     actions: {
         async search(query: string) {
             this.loading = true;
-            this.searchResults = await search(query);
+            const searchResult = await search(query);
+            
+            this.totalPage = searchResult.totalPages;
+            this.currentPage = searchResult.currentPage;
+            this.searchResultsFoods = searchResult.foods;
+            
             this.loading = false;
         },
         
-        async fetchItemById(id: number) {
-            return await fetchItemById(id);
+        async changePage(page: number) {
+            this.loading = true;
+            const searchResult = await search(this.lastQuery, page);
+            
+            this.totalPage = searchResult.totalPages;
+            this.currentPage = searchResult.currentPage;
+            this.searchResultsFoods = searchResult.foods;
+            
+            this.loading = false;
         }
     }
 })

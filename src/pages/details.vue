@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSearchStore } from '@/stores/search.store.ts';
 import { onMounted, Ref, ref } from 'vue';
 import Spinner from '@/components/Spinner.vue';
 import BackButton from '@/components/BackButton.vue';
@@ -7,12 +6,11 @@ import NutrientsTable from '@/components/NutrientsTable.vue';
 import { SearchResultFood } from '@/types';
 import { getFormattedDate } from '@/utils';
 import QuantityDialog from '@/components/QuantityDialog.vue';
+import { fetchItemById } from '@/services';
 
 const props = defineProps<{
     id: string
 }>();
-
-const searchStore = useSearchStore();
 
 const food: Ref<SearchResultFood | null> = ref(null);
 const loading = ref(false);
@@ -23,7 +21,7 @@ const loading = ref(false);
 onMounted(async () => {
     if(!food.value) {
         loading.value = true;
-        food.value = await searchStore.fetchItemById(Number(props.id));
+        food.value = await fetchItemById(Number(props.id));
         loading.value = false;
     }
 })
