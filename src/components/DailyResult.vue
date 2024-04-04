@@ -3,10 +3,10 @@ import { Table, TableRow, TableHeader, TableHead, TableBody, TableCell } from '@
 
 defineProps<{
     data: {
-        Name: string
-        Amount: Number
-        Unit: String
-        Recommendation: Number
+        name: string
+        amount: number | string
+        unit: string
+        recommendation: number | string
     }[]
 }>()
 
@@ -25,10 +25,10 @@ defineProps<{
         </TableHeader>
         <TableBody>
             <TableRow v-for="item in data">
-                <TableCell class="font-bold">{{ item.Name }}</TableCell>
-                <TableCell>{{ item.Amount }}</TableCell>
-                <TableCell>{{ item.Unit }}</TableCell>
-                <TableCell>{{ item.Recommendation }}</TableCell>
+                <TableCell class="font-bold">{{ item.name }}</TableCell>
+                <TableCell>{{ item.amount }}</TableCell>
+                <TableCell>{{ item.unit }}</TableCell>
+                <TableCell>{{ item.recommendation }}</TableCell>
             </TableRow>
         </TableBody>
     </Table>
