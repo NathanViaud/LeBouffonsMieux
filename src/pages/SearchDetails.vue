@@ -48,7 +48,7 @@ function saveProduct(product: SearchResultFood, quantity: number) {
                 </p>
                 <QuantityDialog @save="saveProduct(food, $event)" label="Add to my list" variant="primary" />
             </div>
-            <div class="flex flex-col gap-2">
+            <div v-if="food.foodNutrients" class="flex flex-col gap-2">
                 <h3 class="text-xl font-medium text-center">Nutrients table</h3>
                 <NutrientsTable :nutrients="food.foodNutrients" />
             </div>

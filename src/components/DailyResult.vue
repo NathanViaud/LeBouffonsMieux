@@ -6,7 +6,7 @@ defineProps<{
         name: string;
         amount: string;
         unit: string;
-        recommendation: string;
+        recommendation: string | number;
     }[]
 }>()
 
