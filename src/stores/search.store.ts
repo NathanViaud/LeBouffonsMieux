@@ -33,6 +33,7 @@ export const useSearchStore = defineStore('search', {
             this.totalPage = searchResult.totalPages;
             this.currentPage = searchResult.currentPage;
             this.searchResultsFoods = searchResult.foods;
+            this.lastQuery = query;
             
             this.loading = false;
         },
