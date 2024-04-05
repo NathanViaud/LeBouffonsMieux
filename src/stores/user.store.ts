@@ -83,5 +83,13 @@ export const useUserStore = defineStore('user', {
             this.foodList.push(food);
             this.saveFoodList();
         },
+        deleteFood(food: Food) {
+            const index = this.foodList.findIndex((item: Food) => item.fdcId === food.fdcId);
+            if (index !== -1) {
+              this.foodList.splice(index, 1);
+              this.saveFoodList();
+            }
+          }
+          
     }
 })

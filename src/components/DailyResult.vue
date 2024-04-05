@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { Table, TableRow, TableHeader, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { useUserStore } from '@/stores/user.store.ts';
+import { computed } from 'vue';
 
 const userStore = useUserStore();
 
-const data = [
+
+
+const data = computed(() => [
     {
         name: 'Energy',
         amount: `${userStore.getEnergy.toFixed(1)} / ${(userStore.getEnergy * 4.184).toFixed(1)}`,
@@ -41,7 +44,7 @@ const data = [
         unit: 'g',
         recommendation: 0
     },
-]
+])
 </script>
 
 <template>
