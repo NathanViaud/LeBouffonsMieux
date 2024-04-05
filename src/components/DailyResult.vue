@@ -5,8 +5,6 @@ import { computed } from 'vue';
 
 const userStore = useUserStore();
 
-
-
 const data = computed(() => [
     {
         name: 'Energy',
@@ -44,7 +42,8 @@ const data = computed(() => [
         unit: 'g',
         recommendation: 0
     },
-])
+]);
+
 </script>
 
 <template>
