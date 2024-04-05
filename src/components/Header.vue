@@ -33,7 +33,7 @@ function handleSearch() {
             </router-link>
             <div class="flex flex-1 justify-end flex-row items-center gap-6 ">
                 <div class="relative w-full max-w-sm items-center">
-                    <Input v-model="search" placeholder="Search..." @keydown.enter="handleSearch" class="pl-10" />
+                    <Input id="searchbar" v-model="search" placeholder="Search..." @keydown.enter="handleSearch" class="pl-10" />
                     <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
                         <Search class="size-6 text-muted-foreground" />
                     </span>
