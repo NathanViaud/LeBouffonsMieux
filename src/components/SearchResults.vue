@@ -39,7 +39,11 @@ async function saveProduct(id: number, quantity: number) {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow @click="goToDetails(result.fdcId)" v-for="result in searchStore.searchResultsFoods">
+                    <TableRow
+                        v-for="result in searchStore.searchResultsFoods"
+                        @click="goToDetails(result.fdcId)"
+                        class="cursor-pointer"
+                    >
                         <TableCell class="font-medium">{{ result.ndbNumber }}</TableCell>
                         <TableCell>{{ result.description }}</TableCell>
                         <TableCell>{{ getFormattedDate(result.publishedDate) || 'not defined' }}</TableCell>
