@@ -81,6 +81,6 @@ export const useUserStore = defineStore('user', {
         addFood(food: Food) {
             this.foodList.push(food);
             this.saveFoodList();
-        }
+        },
     }
 })

@@ -8,3 +8,7 @@ export function getFormattedDate(date: string | undefined) {
     
     return new Date(date).toLocaleDateString('en-US', options);
 }
+
+export function getCurrentDate() {
+    return new Date().toISOString().split('T')[0];
+}
