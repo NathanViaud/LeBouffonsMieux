@@ -3,6 +3,7 @@ import DailyResult from '@/components/DailyResult.vue';
 import DailyList from '@/components/DailyList.vue';
 import { useUserStore } from '@/stores/user.store';
 import { computed } from 'vue';
+import DailyChart from '@/components/DailyChart.vue';
 
 const userStore = useUserStore();
 
@@ -59,7 +60,9 @@ const data = computed(() => [
                 </div>
             </div>
         </div>
+
         <div class="border border-black w-3/4 rounded-lg mx-auto my-3"></div>
+
         <div class="w-3/4 mx-auto py-4">
             <p class="font-bold pb-3 text-xl">Nutrient intake</p>
         </div>
@@ -70,6 +73,13 @@ const data = computed(() => [
                     <DailyResult :data="data"/>
                 </div>
             </div>
+        </div>
+
+        <div class="border border-black w-3/4 rounded-lg mx-auto my-3"></div>
+
+        <div class="w-3/4 mx-auto py-4">
+            <h2 class="font-bold pb-3 text-xl">Recapitulative chart</h2>
+            <DailyChart class="mt-3" />
         </div>
     </div>
 </template>
