@@ -39,3 +39,51 @@ export function saveFoodList(foodList: Food[]): void {
         return
     }
 }
+
+export function getEnergy(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const energy = food.foodNutrients.find((nutrient) => nutrient.name === 'Energy' && nutrient.unitName === 'KCAL');
+    
+    if(!energy || !energy.amount) return 0;
+    return energy ? energy.amount / 100 * food.quantity : 0;
+}
+
+export function getWater(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const water = food.foodNutrients.find((nutrient) => nutrient.name === 'Water');
+    
+    if(!water || !water.amount) return 0;
+    return water ? water.amount / 100 * food.quantity : 0;
+}
+
+export function getCarbohydrate(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const carbo = food.foodNutrients.find((nutrient) => nutrient.name === 'Carbohydrate, by difference');
+    
+    if(!carbo || !carbo.amount) return 0;
+    return carbo ? carbo.amount / 100 * food.quantity : 0;
+}
+
+export function getLipid(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const lipid = food.foodNutrients.find((nutrient) => nutrient.name === 'Total lipid (fat)');
+    
+    if(!lipid || !lipid.amount) return 0;
+    return lipid ? lipid.amount / 100 * food.quantity : 0;
+}
+
+export function getProtein(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const protein = food.foodNutrients.find((nutrient) => nutrient.name === 'Protein');
+    
+    if(!protein || !protein.amount) return 0;
+    return protein ? protein.amount / 100 * food.quantity : 0;
+}
+
+export function getAlcohol(food: Food): number {
+    if(!food.foodNutrients) return 0;
+    const alcohol = food.foodNutrients.find((nutrient) => nutrient.name === 'Alcohol, ethyl');
+    
+    if(!alcohol || !alcohol.amount) return 0;
+    return alcohol ? alcohol.amount / 100 * food.quantity : 0;
+}

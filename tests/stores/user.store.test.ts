@@ -31,7 +31,7 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getEnergy).toBe(254 * 2 + 408 * 2);
+        expect(userStore.getTotalEnergy).toBe(254 * 2 + 408 * 2);
     })
     
     it('getWater', async() => {
@@ -43,7 +43,7 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getWater).toBe(36.6 * 2 + 38.7 * 2);
+        expect(userStore.getTotalWater).toBe(36.6 * 2 + 38.7 * 2);
     })
     
     it('getCarbohydrate', async() => {
@@ -55,7 +55,7 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getCarbohydrate).toBe(2.44 * 2 + 43.1 * 2);
+        expect(userStore.getTotalCarbohydrate).toBe(2.44 * 2 + 43.1 * 2);
     })
     
     it('getLipid', async() => {
@@ -67,7 +67,7 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getLipid).toBe(3.55 * 2 + 34 * 2);
+        expect(userStore.getTotalLipid).toBe(3.55 * 2 + 34 * 2);
     })
     
     it('getProtein', async() => {
@@ -79,7 +79,7 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getProtein).toBe(12.3 * 2 + 23.3 * 2);
+        expect(userStore.getTotalProtein).toBe(12.3 * 2 + 23.3 * 2);
     
     })
     
@@ -92,6 +92,6 @@ describe('User store', () => {
         userStore.addFood(breadFood);
         userStore.addFood(cheddarFood);
         
-        expect(userStore.getAlcohol).toBe(0);
+        expect(userStore.getTotalAlcohol).toBe(0);
     })
 })

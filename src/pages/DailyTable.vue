@@ -2,9 +2,48 @@
 import DailyResult from '@/components/DailyResult.vue';
 import DailyList from '@/components/DailyList.vue';
 import { useUserStore } from '@/stores/user.store';
+import { computed } from 'vue';
 
 const userStore = useUserStore();
 
+const data = computed(() => [
+    {
+        name: 'Energy',
+        amount: `${userStore.getTotalEnergy.toFixed(1)} / ${(userStore.getTotalEnergy * 4.184).toFixed(1)}`,
+        unit: 'kCal / kJoule',
+        recommendation: "2500 / 10460"
+    },
+    {
+        name: 'Water',
+        amount: userStore.getTotalWater.toFixed(1),
+        unit: 'mL (g)',
+        recommendation: 2500
+    },
+    {
+        name: 'Carbohydrate',
+        amount: userStore.getTotalCarbohydrate.toFixed(1),
+        unit: 'g',
+        recommendation: "280-310"
+    },
+    {
+        name: 'Lipid',
+        amount: userStore.getTotalLipid.toFixed(1),
+        unit: 'g',
+        recommendation: "100-110"
+    },
+    {
+        name: 'Protein',
+        amount: userStore.getTotalProtein.toFixed(1),
+        unit: 'g',
+        recommendation: 95
+    },
+    {
+        name: 'Alcohol',
+        amount: userStore.getTotalAlcohol.toFixed(1),
+        unit: 'g',
+        recommendation: 0
+    },
+]);
 </script>
 
 <template>
@@ -28,7 +67,7 @@ const userStore = useUserStore();
             <p class="font-bold pb-3 text-md">Macroelement total</p>
             <div class="flex gap-2">
                 <div class="flex flex-col gap-2 w-full">
-                    <DailyResult/>
+                    <DailyResult :data="data"/>
                 </div>
             </div>
         </div>
