@@ -20,7 +20,9 @@ export function createFood(result: SearchResultFood, quantity: number): Food {
  */
 export function fetchFoodList(): Food[] {
     try {
-        return localStorage.getItem('foodList') ? JSON.parse(localStorage.getItem('foodList')!) : ([] as Food[])
+        return localStorage.getItem('foodList')
+            ? JSON.parse(localStorage.getItem('foodList')!).filter((food: Food) => food.date === getCurrentDate())
+            : ([] as Food[])
     } catch {
         // return empty array when localStorage is not available (testing)
         return [];
