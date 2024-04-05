@@ -5,7 +5,7 @@ import { useSearchStore } from '@/stores/search.store.ts';
 
 const searchStore = useSearchStore();
 
-function changePage(page) {
+function changePage(page: number) {
     if(page === searchStore.currentPage) return;
 
     searchStore.changePage(page);

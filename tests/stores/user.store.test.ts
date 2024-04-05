@@ -12,7 +12,7 @@ describe('User store', () => {
     it('add Item to foodList', async() => {
         const userStore = useUserStore();
         
-        const breadFood = createFood();
+        const breadFood = createFood(bread, 200);
         
         userStore.addFood(breadFood);
         

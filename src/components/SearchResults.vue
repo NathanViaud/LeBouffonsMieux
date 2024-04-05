@@ -6,7 +6,6 @@ import { router } from '@/router.ts';
 import Spinner from '@/components/Spinner.vue';
 import { useUserStore } from '@/stores/user.store.ts';
 import QuantityDialog from '@/components/QuantityDialog.vue';
-import { Food } from '@/types';
 import ResultsPagination from '@/components/ResultsPagination.vue';
 import { fetchItemById } from '@/services';
 
