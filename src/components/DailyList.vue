@@ -50,13 +50,13 @@ function goToFoodDetails(id: number) {
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow v-for="item in dataFood" @click="goToFoodDetails(item.fdcId)">
+            <TableRow v-for="item in dataFood" @click="goToFoodDetails(item.fdcId)" class="cursor-pointer">
                 <TableCell class="font-bold">{{ item.description }}</TableCell>
                 <TableCell class="text-right">{{ item.quantity }}</TableCell>
                 <TableCell>g</TableCell>
                 <TableCell>
                     <Button
-                        @click="deleteProduct(item)"
+                        @click.stop="deleteProduct(item)"
                         variant="outline"
                         size="icon"
                         class="bg-red-100 text-red-500 border-red-100 hover:bg-red-200 hover:text-red-500 hover:border-red-200">
