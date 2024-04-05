@@ -10,7 +10,6 @@ describe('User store', () => {
         
         // reset foodList before testing
         const userStore = useUserStore();
-        userStore.foodList = [];
     })
     
     it('add Item to foodList', async() => {

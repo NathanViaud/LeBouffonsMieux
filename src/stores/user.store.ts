@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { Food } from '@/types';
+import { fetchFoodList, saveFoodList } from '@/utils';
 
 interface UserStore {
     foodList: Food[];
@@ -7,7 +8,7 @@ interface UserStore {
 
 export const useUserStore = defineStore('user', {
     state: (): UserStore => ({
-        foodList: localStorage.getItem('foodList') ? JSON.parse(localStorage.getItem('foodList')!) : ([] as Food[])
+        foodList: fetchFoodList()
     }),
     
     getters: {
@@ -75,7 +76,7 @@ export const useUserStore = defineStore('user', {
     
     actions: {
         saveFoodList() {
-            localStorage.setItem('foodList', JSON.stringify(this.foodList));
+            saveFoodList(this.foodList);
         },
         
         addFood(food: Food) {
