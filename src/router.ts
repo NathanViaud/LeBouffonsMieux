@@ -9,11 +9,16 @@ export const router = createRouter({
         },
         {
             path: '/search',
-            component: () => import('@/pages/search.vue')
+            component: () => import('@/pages/Search.vue')
         },
         {
-            path: '/details/:id',
-            component: () => import('@/pages/details.vue'),
+            path: '/search/details/:id',
+            component: () => import('@/pages/SearchDetails.vue'),
+            props: true
+        },
+        {
+            path: '/food/details/:id',
+            component: () => import('@/pages/FoodDetails.vue'),
             props: true
         },
         {

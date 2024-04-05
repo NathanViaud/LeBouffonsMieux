@@ -40,9 +40,9 @@ function saveProduct(product: SearchResultFood, quantity: number) {
         <BackButton />
         <div v-if="food" class="flex flex-col gap-5">
             <div class="flex flex-col gap-2">
-                <h1 class="text-2xl font-semibold">
+                <h2 class="text-2xl font-semibold">
                     {{ food.description }}
-                </h1>
+                </h2>
                 <p class="text-gray-500">
                     {{ getFormattedDate(food.publicationDate) }}
                 </p>

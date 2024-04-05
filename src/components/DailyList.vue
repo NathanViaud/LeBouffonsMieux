@@ -4,8 +4,8 @@ import { Food } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/stores/user.store';
 import { useToast } from '@/components/ui/toast/use-toast'
-import { ToastAction } from '@/components/ui/toast';
 import { h } from 'vue';
+import { router } from '@/router.ts';
 
 const userStore = useUserStore();
 
@@ -33,6 +33,10 @@ function deleteProduct(food: Food) {
     });
 }
 
+function goToFoodDetails(id: number) {
+    router.push(`/food/details/${id}`);
+}
+
 </script>
 
 <template>
@@ -46,7 +50,7 @@ function deleteProduct(food: Food) {
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow v-for="item in dataFood">
+            <TableRow v-for="item in dataFood" @click="goToFoodDetails(item.fdcId)">
                 <TableCell class="font-bold">{{ item.description }}</TableCell>
                 <TableCell class="text-right">{{ item.quantity }}</TableCell>
                 <TableCell>g</TableCell>

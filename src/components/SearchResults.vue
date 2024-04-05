@@ -13,7 +13,7 @@ const searchStore = useSearchStore();
 const userStore = useUserStore();
 
 function goToDetails(id: number) {
-    router.push(`/details/${id}`)
+    router.push(`/search/details/${id}`)
 }
 
 async function saveProduct(id: number, quantity: number) {

@@ -1,6 +1,15 @@
 import { defineStore } from 'pinia';
 import { Food } from '@/types';
-import { fetchFoodList, saveFoodList } from '@/utils';
+import {
+    fetchFoodList,
+    getAlcohol,
+    getCarbohydrate,
+    getEnergy,
+    getLipid,
+    getProtein,
+    getWater,
+    saveFoodList
+} from '@/utils';
 
 interface UserStore {
     foodList: Food[];
@@ -12,65 +21,23 @@ export const useUserStore = defineStore('user', {
     }),
     
     getters: {
-        getEnergy: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const energy = food.foodNutrients.find((nutrient) => nutrient.name === 'Energy' && nutrient.unitName === 'KCAL');
-                if(!energy || !energy.amount) continue;
-                res += energy.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalEnergy: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getEnergy(food), 0);
         },
-        getWater: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const water = food.foodNutrients.find((nutrient) => nutrient.name === 'Water');
-                if(!water || !water.amount) continue;
-                res += water.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalWater: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getWater(food), 0);
         },
-        getCarbohydrate: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const carbo = food.foodNutrients.find((nutrient) => nutrient.name === 'Carbohydrate, by difference');
-                if(!carbo || !carbo.amount) continue;
-                res += carbo.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalCarbohydrate: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getCarbohydrate(food), 0);
         },
-        getLipid: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const lipid = food.foodNutrients.find((nutrient) => nutrient.name === 'Total lipid (fat)');
-                if(!lipid || !lipid.amount) continue;
-                res += lipid.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalLipid: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getLipid(food), 0);
         },
-        getProtein: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const protein = food.foodNutrients.find((nutrient) => nutrient.name === 'Protein');
-                if(!protein || !protein.amount) continue;
-                res += protein.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalProtein: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getProtein(food), 0);
         },
-        getAlcohol: (state) => {
-            let res = 0;
-            for(const food of state.foodList) {
-                if(!food.foodNutrients) continue;
-                const alcohol = food.foodNutrients.find((nutrient) => nutrient.name === 'Alcohol, ethyl');
-                if(!alcohol || !alcohol.amount) continue;
-                res += alcohol.amount / 100 * food.quantity;
-            }
-            return res;
+        getTotalAlcohol: (state) => {
+            return state.foodList.reduce((acc, food) => acc + getAlcohol(food), 0);
         }
     },
     
@@ -86,10 +53,13 @@ export const useUserStore = defineStore('user', {
         deleteFood(food: Food) {
             const index = this.foodList.findIndex((item: Food) => item.fdcId === food.fdcId);
             if (index !== -1) {
-              this.foodList.splice(index, 1);
-              this.saveFoodList();
+                this.foodList.splice(index, 1);
+                this.saveFoodList();
             }
-          }
-          
+        },
+        getFood(fdcId: number): Food | undefined {
+            return this.foodList.find((food: Food) => food.fdcId === fdcId);
+        }
+        
     }
 })
