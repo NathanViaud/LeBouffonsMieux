@@ -50,7 +50,7 @@ const data = [
         <TableHeader>
             <TableRow>
                 <TableHead>Nutriments</TableHead>
-                <TableHead>Average Amount</TableHead>
+                <TableHead class="text-right">Average Amount</TableHead>
                 <TableHead>Unit</TableHead>
                 <TableHead>Daily Recommendation</TableHead>
             </TableRow>
@@ -58,7 +58,7 @@ const data = [
         <TableBody>
             <TableRow v-for="item in data">
                 <TableCell class="font-bold">{{ item.name }}</TableCell>
-                <TableCell>{{ item.amount }}</TableCell>
+                <TableCell class="text-right">{{ item.amount }}</TableCell>
                 <TableCell>{{ item.unit }}</TableCell>
                 <TableCell>{{ item.recommendation }}</TableCell>
             </TableRow>

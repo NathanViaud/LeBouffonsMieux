@@ -10,7 +10,7 @@ const userStore = useUserStore();
 <template>
     <div>
         <div class="py-5">
-            <p class="text-center font-bold text-3xl">Result of your daily nutritional intake</p>
+            <h2 class="text-center font-bold text-3xl">Result of your daily nutritional intake</h2>
         </div>
         <div class="w-3/4 mx-auto">
             <p class="font-bold pb-3 text-xl">Daily food list</p>
