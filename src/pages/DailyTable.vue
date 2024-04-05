@@ -32,6 +32,5 @@ const userStore = useUserStore();
                 </div>
             </div>
         </div>
-        <pre>{{ userStore.foodList }}</pre>
     </div>
 </template>
