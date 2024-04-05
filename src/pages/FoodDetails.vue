@@ -67,6 +67,6 @@ const data = computed(() => [
         <p class="text-gray-500">
             {{ currentFood!.quantity }}g
         </p>
-        <DailyResult :data="data" />
+        <DailyResult :data="data" :hide-recommendation="true" />
     </div>
 </template>

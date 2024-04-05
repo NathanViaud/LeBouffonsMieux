@@ -7,7 +7,8 @@ defineProps<{
         amount: string;
         unit: string;
         recommendation: string | number;
-    }[]
+    }[],
+    hideRecommendation?: boolean;
 }>()
 
 </script>
@@ -20,7 +21,7 @@ defineProps<{
                 <TableHead>Nutriments</TableHead>
                 <TableHead class="text-right">Average Amount</TableHead>
                 <TableHead>Unit</TableHead>
-                <TableHead>Daily Recommendation</TableHead>
+                <TableHead v-if="!hideRecommendation">Daily Recommendation</TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
@@ -28,7 +29,7 @@ defineProps<{
                 <TableCell class="font-bold">{{ item.name }}</TableCell>
                 <TableCell class="text-right">{{ item.amount }}</TableCell>
                 <TableCell>{{ item.unit }}</TableCell>
-                <TableCell>{{ item.recommendation }}</TableCell>
+                <TableCell v-if="!hideRecommendation">{{ item.recommendation }}</TableCell>
             </TableRow>
         </TableBody>
     </Table>
