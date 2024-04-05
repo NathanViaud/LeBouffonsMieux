@@ -25,8 +25,8 @@ function handleSearch() {
     <header class="border-b-2 border-b-gray-200 pt-2 pb-3 px-3 align-center bg w-full fixed z-10 top-0 backdrop-blur-lg bg-white/50">
         <div class="flex flex-row gap-5">
             <router-link to="/" class="flex flex-row gap-2">
-                <img class="h-24 rounded-xl" src="@/assets/DALLE_2024-04-02_12.06.59_-_Create_a_logo_for_an_application_named_LeBouffonsMieux._The_logo_should_combine_the_imagery_of_a_jester_bouffon_and_food_creating_a_playful_yet_r.webp" alt="">
-                <div class="text-3xl font-bold flex flex-col justify-center">
+                <img class="h-16 rounded-xl" src="@/assets/DALLE_2024-04-02_12.06.59_-_Create_a_logo_for_an_application_named_LeBouffonsMieux._The_logo_should_combine_the_imagery_of_a_jester_bouffon_and_food_creating_a_playful_yet_r.webp" alt="">
+                <div class="text-2xl font-bold flex flex-col justify-center">
                     <p>Bouffons</p>
                     <p>Mieux</p>
                 </div>
